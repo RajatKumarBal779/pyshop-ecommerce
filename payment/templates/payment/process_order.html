@@ -1,0 +1,103 @@
+{% extends 'testapp/base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="bg-dark py-4">
+    <div class="container">
+        <div class="text-center text-white">
+            <h1 class="h2 fw-bolder">Processing Order</h1>
+            <p class="text-white-50 mb-0">This is Temporary</p>
+        </div>
+    </div>
+</header>
+
+<br>
+
+<div class="container">
+
+    <!-- Order Summary -->
+    <div class="row justify-content-center">
+        <div class="col-md-4"> <!--  smaller box -->
+            <div class="card">
+                <div class="card-header text-center"> <!--  heading centered -->
+                    Order Summary
+                </div>
+                <div class="card-body text-start"> <!-- content left aligned -->
+                    {% for product in cart_products %}
+                    <p class="mb-1">
+                        <strong>{{ product.name }}:</strong>
+                        {% if product.is_sale %}
+                        ₹{{ product.sale_price }}
+                        {% else %}
+                        ₹{{ product.price }}
+                        {% endif %}
+                    </p>
+                    <small>
+                        Quantity:
+                        {% for key, value in quantities.items %}
+                        {% if key == product.id|slugify %}
+                        {{ value }}
+                        {% endif %}
+                        {% endfor %}
+                    </small>
+                    <hr class="my-2">
+                    {% endfor %}
+
+                    <p class="mb-2"><strong>Total: ₹{{ totals }}</strong></p>
+                    <a href="{% url 'cart_summary' %}" class="btn btn-outline-secondary">
+                        Update Items
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Shipping Info -->
+    <div class="row justify-content-center">
+        <div class="col-md-4"> <!--  same size as order summary -->
+            <div class="card">
+                <div class="card-header text-center"> <!--  heading centered -->
+                    Shipping Info
+                </div>
+                <div class="card-body text-start p-3"> <!--  content left aligned -->
+                    Name: {{ shipping_info.shipping_full_name }}<br />
+                    Email: {{ shipping_info.shipping_email }}<br />
+                    Address 1: {{ shipping_info.shipping_address1 }}<br />
+                    City: {{ shipping_info.shipping_city }}<br />
+                    State: {{ shipping_info.shipping_state }}<br />
+                    Pincode: {{ shipping_info.shipping_pincode }}<br />
+                    Country: {{ shipping_info.shipping_country }}<br />
+                    <br />
+                    <a href="{% url 'checkout' %}" class="btn btn-outline-secondary" >Update Shipping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<br>
+<div class="row justify-content-center">
+        <div class="col-md-4"> <!--  same size as order summary -->
+            <div class="card">
+                <div class="card-header text-center"> <!--  heading centered -->
+                    Billing Info
+                </div>
+                <div class="card-body text-start p-3">
+                    <form action="{% url 'process_order' %}" method="POST">
+                    {% csrf_token %}
+                    {{ billing_form.as_p }} <!--  content left aligned -->
+                    <br>
+                    <button type="submit" class="btn btn-outline-success">Pay Now</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
+{% endblock %}

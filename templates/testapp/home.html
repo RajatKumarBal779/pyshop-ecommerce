@@ -1,0 +1,86 @@
+{% extends 'testapp/base.html' %}
+{% block content %}
+<!-- Header-->
+<header class="bg-dark py-4">
+    <div class="container">
+        <div class="text-center text-white">
+            <h1 class="h2 fw-bolder">Shop Smart. Live Better.</h1>
+            <p class="mb-0 text-white-50">Explore our collection and find something you'll love today.</p>
+        </div>
+    </div>
+</header>
+
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-3 gx-lg-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            {% for product in products %}
+            {% if product.is_sale %}
+            <div class="col mb-4">
+                <div class="card h-100 shadow-sm" style="max-width: 250px; margin:auto; border: 1px solid #e0e0e0;">
+
+                    <!-- Badge -->
+                    <div class="badge bg-dark text-warning position-absolute" style="top: 0.3rem; right: 0.3rem;">Sale
+                    </div>
+
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{product.image.url}}"
+                        style="height: 180px; object-fit: contain; padding:10px;" alt="..." />
+
+                    <!-- Product details-->
+                    <div class="card-body p-2">
+                        <div class="text-center">
+                            <h6 class="fw-bolder mb-1">{{product.name}}</h6>
+                            <small class="text-muted">
+                                <strike>₹{{product.price}}</strike>
+                            </small><br>
+                            <span class="fw-semibold">₹{{product.sale_price}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Product actions-->
+                    <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-sm btn-outline-dark mt-auto" href="{% url 'product' product.id %}">
+                                View
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {% else %}
+            <div class="col mb-4">
+                <div class="card h-100 shadow-sm" style="max-width: 250px; margin:auto; border: 1px solid #e0e0e0;">
+
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{product.image.url}}"
+                        style="height: 180px; object-fit: contain; padding:10px;" alt="..." />
+
+                    <!-- Product details-->
+                    <div class="card-body p-2">
+                        <div class="text-center">
+                            <h6 class="fw-bolder mb-1">{{product.name}}</h6>
+                            <span class="fw-semibold">₹{{product.price}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Product actions-->
+                    <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-sm btn-outline-dark mt-auto" href="{% url 'product' product.id %}">
+                                View
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+</section>
+{% endblock %}

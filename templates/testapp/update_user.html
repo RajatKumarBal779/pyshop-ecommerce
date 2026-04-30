@@ -1,0 +1,52 @@
+{% extends 'testapp/base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="bg-dark py-4">
+    <div class="container">
+        <div class="text-center text-white">
+            <h1 class="h2 fw-bolder">Update Profile</h1>
+            <p class="text-white-50 mb-0">Update User Profile</p>
+        </div>
+    </div>
+</header>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+
+                <form method="POST" action="{% url 'update_user' %}">
+                    {% csrf_token %}
+
+                    <div class="mb-3">{{ user_form.username }}</div>
+                    <div class="mb-3">{{ user_form.first_name }}</div>
+                    <div class="mb-3">{{ user_form.last_name }}</div>
+                    <div class="mb-3">{{ user_form.email }}</div>
+                    <!-- <div class="mb-3">{{ user_form.password1 }}</div>
+                    <div class="mb-3">{{ user_form.password2 }}</div> -->
+
+                    <!-- Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-dark rounded-3"> <i class="bi bi-check-circle me-2"></i>Update Profile</button>
+                    </div>
+
+                    <!-- Login redirect -->
+                    <!-- <p class="text-center mt-3 small">
+                        Already have an account?
+                        <a href="{% url 'login' %}" class="text-dark fw-semibold text-decoration-none">Login</a>
+                    </p> -->
+
+                </form><br>
+                <div class="d-grid">
+                    <a href="{% url 'update_password' %}" class="btn btn-dark rounded-3"> <i class="bi bi-check-circle me-2"></i> Update Password</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br>
+
+{% endblock %}

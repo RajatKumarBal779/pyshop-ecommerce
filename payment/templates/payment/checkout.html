@@ -1,0 +1,82 @@
+{% extends 'testapp/base.html' %}
+{% block content %}
+
+<!-- Header -->
+<header class="bg-dark py-4">
+    <div class="container">
+        <div class="text-center text-white">
+            <h1 class="h2 fw-bolder">Checkout</h1>
+            <p class="text-white-50 mb-0">Review Your Order...</p>
+        </div>
+    </div>
+</header>
+
+<div class="container my-5">
+    <form method="POST" action="{% url 'billing_info' %}">
+        {% csrf_token %}
+        <div class="row justify-content-center g-4">
+
+            <!-- Order Summary -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white text-center fw-bold">
+                        <i class="bi bi-cart me-2"></i>Order Summary
+                    </div>
+                    <div class="card-body text-start p-4">
+                        {% for product in cart_products %}
+                        <p class="mb-1">
+                            <strong>{{ product.name }}:</strong>
+                            {% if product.is_sale %}
+                            ₹{{ product.sale_price }}
+                            {% else %}
+                            ₹{{ product.price }}
+                            {% endif %}
+                        </p>
+                        <small class="text-muted">
+                            Quantity:
+                            {% for key, value in quantities.items %}
+                            {% if key == product.id|slugify %}
+                            {{ value }}
+                            {% endif %}
+                            {% endfor %}
+                        </small>
+                        <hr class="my-2">
+                        {% endfor %}
+
+                        <p class="mb-3"><strong>Total: ₹{{ totals }}</strong></p>
+                        <a href="{% url 'cart_summary' %}" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="bi bi-pencil me-1"></i>Update Items
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Info -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white text-center fw-bold">
+                        <i class="bi bi-truck me-2"></i>Shipping Info
+                    </div>
+                    <div class="card-body text-start p-4">
+                        {{ shipping_form.as_p }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Submit Button -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8 text-center">
+                <button type="submit" class="btn btn-dark px-5 py-2 rounded-3">
+                    <i class="bi bi-arrow-right-circle me-2"></i>Continue To Billing
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<br>
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'testapp/base.html' %}
+{% block content %}
+
+<!-- Header -->
+<header class="bg-dark py-4">
+    <div class="container">
+        <div class="text-center text-white">
+            <h1 class="h2 fw-bolder">About Us</h1>
+            <p class="mb-0 text-white-50">Welcome to PyShop...</p>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<div class="container my-5">
+
+    <!-- Intro -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8 text-center">
+            <h2 class="fw-bold mb-3">Who We Are</h2>
+            <p class="text-muted fs-5">
+                PyShop is a modern online store built with passion and purpose. 
+                We believe shopping should be simple, secure, and enjoyable — 
+                so we created a platform that puts you first.
+            </p>
+        </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <!-- 3 Feature Cards -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-bag-heart fs-1 text-dark"></i>
+                    </div>
+                    <h5 class="fw-bold">Quality Products</h5>
+                    <p class="text-muted">
+                        Every product on PyShop is carefully selected to ensure 
+                        you get the best value for your money. No compromises.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-shield-lock fs-1 text-dark"></i>
+                    </div>
+                    <h5 class="fw-bold">Secure Payments</h5>
+                    <p class="text-muted">
+                        We use Razorpay — one of India's most trusted payment 
+                        gateways — so your transactions are always safe and encrypted.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-truck fs-1 text-dark"></i>
+                    </div>
+                    <h5 class="fw-bold">Fast Delivery</h5>
+                    <p class="text-muted">
+                        We partner with reliable logistics providers to make sure 
+                        your orders reach you quickly and in perfect condition.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <!-- Our Story -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <h2 class="fw-bold text-center mb-4">Our Story</h2>
+            <p class="text-muted" style="text-align: justify;">
+                PyShop started as a small idea — what if buying online felt less 
+                like a chore and more like an experience? We built this platform 
+                from the ground up using Django, with a focus on clean design, 
+                fast performance, and a checkout process that actually makes sense.
+            </p>
+            <p class="text-muted" style="text-align: justify;">
+                We are a small but dedicated team of developers and designers who 
+                care deeply about the details. From the moment you land on our homepage 
+                to the second your order is confirmed, every step is designed with 
+                you in mind.
+            </p>
+            <p class="text-muted" style="text-align: justify;">
+                Whether you're shopping for yourself or someone you love, 
+                PyShop is here to make it easy, affordable, and enjoyable. 
+                Thank you for being part of our journey.
+            </p>
+        </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <!-- Stats Row -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4 mb-3">
+            <h2 class="fw-bold">500+</h2>
+            <p class="text-muted">Products Available</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <h2 class="fw-bold">1,200+</h2>
+            <p class="text-muted">Happy Customers</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <h2 class="fw-bold">100%</h2>
+            <p class="text-muted">Secure Checkout</p>
+        </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <!-- Contact CTA -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8 text-center">
+            <h2 class="fw-bold mb-3">Get In Touch</h2>
+            <p class="text-muted mb-4">
+                Have questions or feedback? We'd love to hear from you. 
+                Reach out to us anytime and we'll get back to you as soon as possible.
+            </p>
+            <a href="mailto:support@pyshop.com" class="btn btn-dark px-4 py-2">
+                Contact Us
+            </a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

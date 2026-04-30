@@ -1,0 +1,65 @@
+{% extends 'testapp/base.html' %}
+{% block content %}
+
+<!-- Header -->
+<header class="bg-dark py-4">
+    <div class="container">
+        <div class="text-center text-white">
+            <h1 class="h2 fw-bolder">Update Info</h1>
+            <p class="text-white-50 mb-0">Update User Info</p>
+        </div>
+    </div>
+</header>
+
+<div class="container my-5">
+    <form method="POST" action="{% url 'update_info' %}">
+        {% csrf_token %}
+        <div class="row justify-content-center g-4">
+
+            <!-- Billing Info -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white text-center fw-bold">
+                        <i class="bi bi-credit-card me-2"></i>Billing Information
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="mb-3">{{ form.phone }}</div>
+                        <div class="mb-3">{{ form.address1 }}</div>
+                        <div class="mb-3">{{ form.address2 }}</div>
+                        <div class="mb-3">{{ form.city }}</div>
+                        <div class="mb-3">{{ form.state }}</div>
+                        <div class="mb-3">{{ form.pincode }}</div>
+                        <div class="mb-3">{{ form.country }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Info -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white text-center fw-bold">
+                        <i class="bi bi-truck me-2"></i>Shipping Information
+                    </div>
+                    <div class="card-body p-4">
+                        {{ shipping_form.as_p }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Submit Button -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8 text-center">
+                <button type="submit" class="btn btn-dark px-5 py-2 rounded-3">
+                    <i class="bi bi-check-circle me-2"></i>Update Profile
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<br>
+
+{% endblock %}
