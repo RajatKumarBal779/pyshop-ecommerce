@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body p-4">
                     <p class="mb-2"><strong>Order ID:</strong> #{{ order.id }}</p>
-                    <p class="mb-2"><strong>Amount Paid:</strong> ${{ order.amount_paid }}</p>
+                    <p class="mb-2"><strong>Amount Paid:</strong> ₹{{ order.amount_paid }}</p>
                     <p class="mb-2"><strong>Email:</strong> {{ order.email }}</p>
                     <p class="mb-2"><strong>Name:</strong> {{ order.full_name }}</p>
 
@@ -58,7 +58,7 @@
                             <tr>
                                 <td>{{ item.product }}</td>
                                 <td>{{ item.quantity }}</td>
-                                <td>${{ item.price }}</td>
+                                <td>₹{{ item.price }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
